@@ -1,0 +1,13 @@
+MediLog is a complete, offline-first solution for managing your family's medical history.
+
+Features:
+- Privacy First: 100% offline, no cloud sync, no tracking
+- Multiple Profiles: Manage records for the whole family
+- Medicine Database: Offline access to 253,000+ medicines
+- Doctor Visits: Record prescriptions, tests, and follow-ups
+- Health Tracking: Monitor BP, weight, and other vitals
+- Smart Reminders: Medicine schedule and follow-up alerts
+- OCR Scanning: Scan prescriptions and reports
+- Elderly Friendly: Large text and simple navigation
+
+Open Source and F-Droid compliant.

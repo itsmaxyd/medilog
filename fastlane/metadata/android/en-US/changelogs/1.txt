@@ -1,0 +1,5 @@
+Initial release
+- Basic profile management
+- Doctor visits and prescriptions
+- Medicine database search
+- Offline storage
