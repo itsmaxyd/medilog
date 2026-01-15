@@ -3,9 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:drift/drift.dart' as drift;
 import 'package:medilog/core/constants/app_colors.dart';
 import 'package:medilog/data/database/database.dart';
-import 'package:medilog/data/database/medicine_database.dart'; // For Medicine type
 import 'package:medilog/providers/providers.dart';
-import 'package:medilog/features/medicines/controllers/medicine_controller.dart';
 
 class PrescriptionAddScreen extends ConsumerStatefulWidget {
   final int visitId;
@@ -95,50 +93,15 @@ class _PrescriptionAddScreenState extends ConsumerState<PrescriptionAddScreen> {
               const Text('Medicine Name', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               const SizedBox(height: 8),
               
-              // Autocomplete for Medicine
-              Consumer(
-                builder: (context, ref, child) {
-                  return Autocomplete<Medicine>(
-                    optionsBuilder: (TextEditingValue textEditingValue) {
-                      if (textEditingValue.text.length < 2) {
-                        return const Iterable<Medicine>.empty();
-                      }
-                      // Trigger search
-                      ref.read(medicineSearchProvider.notifier).search(textEditingValue.text);
-                      // Return current state (might be slightly stale but updates quickly)
-                      return ref.read(medicineSearchProvider).value ?? [];
-                    },
-                    displayStringForOption: (Medicine option) => option.name,
-                    onSelected: (Medicine selection) {
-                      _selectedMedicineId = selection.id;
-                      _medicineController.text = selection.name;
-                      // Try to auto-fill dosage from pack size/composition if possible? 
-                      // For now just name.
-                    },
-                    fieldViewBuilder: (context, textEditingController, focusNode, onFieldSubmitted) {
-                      // Sync with our controller
-                      textEditingController.text = _medicineController.text;
-                      // We need to listen to changes on textEditingController to update _medicineController
-                      // Actually let's just use textEditingController as source of truth for name
-                      return TextFormField(
-                        controller: textEditingController,
-                        focusNode: focusNode,
-                        decoration: const InputDecoration(
-                          hintText: 'Search ..',
-                          prefixIcon: Icon(Icons.search),
-                        ),
-                        validator: (val) => val == null || val.isEmpty ? 'Please enter medicine name' : null,
-                        onChanged: (val) {
-                          _medicineController.text = val;
-                          _selectedMedicineId = null; // Clear ID if typed manually
-                        },
-                      );
-                    },
-                  );
-                },
+              TextFormField(
+                controller: _medicineController,
+                decoration: const InputDecoration(
+                  labelText: 'Medicine Name',
+                  hintText: 'Search or enter medicine name',
+                  prefixIcon: Icon(Icons.medication),
+                ),
+                validator: (val) => val == null || val.isEmpty ? 'Please enter medicine name' : null,
               ),
-              
-              const SizedBox(height: 24),
               Row(
                 children: [
                   Expanded(

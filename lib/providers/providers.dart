@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/database/database.dart';
-import '../data/database/medicine_database.dart';
 import '../data/repositories/profile_repository.dart';
 import '../data/repositories/condition_repository.dart';
 import '../data/repositories/visit_repository.dart';
@@ -13,15 +12,8 @@ import '../data/repositories/health_tip_repository.dart';
 import '../services/ocr_service.dart';
 import '../services/notification_service.dart';
 
-// Database Providers
 final databaseProvider = Provider<AppDatabase>((ref) {
   final db = AppDatabase();
-  ref.onDispose(db.close);
-  return db;
-});
-
-final medicineDatabaseProvider = Provider<MedicineDatabase>((ref) {
-  final db = MedicineDatabase();
   ref.onDispose(db.close);
   return db;
 });

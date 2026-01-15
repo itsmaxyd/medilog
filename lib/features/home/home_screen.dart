@@ -11,6 +11,7 @@ import '../insurance/screens/insurance_list_screen.dart';
 import '../vitals/screens/vital_list_screen.dart';
 import '../period/screens/period_list_screen.dart';
 import '../tips/screens/health_tips_screen.dart';
+import '../../data/database/database.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -61,7 +62,7 @@ class HomeScreen extends ConsumerWidget {
             // Quick Actions
             Padding(
                padding: const EdgeInsets.symmetric(horizontal: 16),
-               child: _buildQuickActions(context),
+               child: _buildQuickActions(context, profile),
             ),
           ],
         ),
@@ -69,7 +70,7 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildQuickActions(BuildContext context) {
+  Widget _buildQuickActions(BuildContext context, Profile? profile) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -171,19 +172,21 @@ class HomeScreen extends ConsumerWidget {
         // Row 3
         Row(
           children: [
-            Expanded(
-              child: _buildActionCard(
-                context, 
-                icon: Icons.water_drop,
-                label: 'Period\nTracker',
-                color: Colors.pink.shade50,
-                iconColor: Colors.pink.shade400,
-                onTap: () {
-                   Navigator.push(context, MaterialPageRoute(builder: (_) => const PeriodListScreen()));
-                },
+            if (profile?.sex != 'Male') ...[
+              Expanded(
+                child: _buildActionCard(
+                  context, 
+                  icon: Icons.water_drop,
+                  label: 'Period\nTracker',
+                  color: Colors.pink.shade50,
+                  iconColor: Colors.pink.shade400,
+                  onTap: () {
+                     Navigator.push(context, MaterialPageRoute(builder: (_) => const PeriodListScreen()));
+                  },
+                ),
               ),
-            ),
-            const SizedBox(width: 16),
+              const SizedBox(width: 16),
+            ],
             Expanded(
               child: _buildActionCard(
                 context, 
