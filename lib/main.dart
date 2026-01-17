@@ -4,20 +4,14 @@ import 'app.dart';
 import 'services/notification_service.dart';
 import 'providers/providers.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   
-  // Initialize other services here
-  final notificationService = NotificationService();
-  await notificationService.init();
-  await notificationService.requestPermissions();
+  // Services are now initialized inside the app or providers to prevent splash screen delay
   
   runApp(
-    ProviderScope(
-      overrides: [
-        notificationServiceProvider.overrideWithValue(notificationService),
-      ],
-      child: const MediLogApp(),
+    const ProviderScope(
+      child: MediLogApp(),
     ),
   );
 }

@@ -1,0 +1,9 @@
+MediLog is a privacy-focused, offline-first medical record manager for you and your family.
+
+Key Features:
+- Doctor Visits: Keep track of visits and prescriptions.
+- Vitals Tracking: Monitor important health metrics.
+- Offline First: Your data stays on your device, ensuring maximum privacy.
+- Senior-Friendly: Simple and clear interface designed for all age groups.
+
+Take control of your health records with MediLog.

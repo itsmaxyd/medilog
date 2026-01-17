@@ -131,4 +131,59 @@ class ElderlyTheme {
       ),
     );
   }
+  static ThemeData get darkThemeData {
+    return ThemeData(
+      useMaterial3: true,
+      primaryColor: AppColors.primary,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: AppColors.primary,
+        brightness: Brightness.dark,
+        surface: const Color(0xFF1E1E1E),
+        background: const Color(0xFF121212),
+        secondary: AppColors.accent,
+      ),
+      scaffoldBackgroundColor: const Color(0xFF121212),
+      
+      // Typography - High contrast for dark mode
+      textTheme: const TextTheme(
+        displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
+        displayMedium: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+        displaySmall: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
+        
+        headlineLarge: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: Colors.white),
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
+        headlineSmall: TextStyle(fontSize: 22, fontWeight: FontWeight.w600, color: Colors.white),
+        
+        titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.w600, color: Colors.white),
+        titleMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white70),
+        titleSmall: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.white70),
+        
+        bodyLarge: TextStyle(fontSize: 18, height: 1.5, color: Colors.white),
+        bodyMedium: TextStyle(fontSize: 16, height: 1.5, color: Colors.white70),
+        bodySmall: TextStyle(fontSize: 14, height: 1.5, color: Colors.white60),
+      ),
+      
+       // App Bar
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Color(0xFF1E1E1E),
+        foregroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+      ),
+
+      // Card Theme
+      cardTheme: CardThemeData(
+        elevation: 2,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        color: const Color(0xFF2C2C2C), // Darker card color
+        margin: const EdgeInsets.only(bottom: 16),
+      ),
+      
+      // Icon Theme
+      iconTheme: const IconThemeData(
+        size: 28,
+        color: Colors.white,
+      ),
+    );
+  }
 }

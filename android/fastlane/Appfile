@@ -1,0 +1,2 @@
+json_key_file("service-account.json") # Path to the json secret file - local to the fastlane directory
+package_name("com.medilog.medilog") # The package name of your app

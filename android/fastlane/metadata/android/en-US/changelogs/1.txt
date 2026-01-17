@@ -1,0 +1,3 @@
+- Initial release of MediLog.
+- Privacy-focused offline medical record management.
+- Doctor visits and vitals tracking.

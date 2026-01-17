@@ -44,5 +44,7 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# MediLog specific - exclude source medicine database
+# MediLog specific - exclude source medicine database and build logs
 /extra/
+*.iml
+build_log.txt

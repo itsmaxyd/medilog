@@ -1,0 +1,23 @@
+default_platform(:android)
+
+platform :android do
+  desc "Builds the Android App Bundle"
+  lane :build_aab do
+    sh("cd ../.. && flutter build appbundle --release")
+  end
+
+  desc "Builds the Android APK"
+  lane :build_apk do
+    sh("cd ../.. && flutter build apk --release")
+  end
+
+  desc "Submit a new Internal Build to Play Store"
+  lane :internal do
+    upload_to_play_store(track: 'internal', aab: '../build/app/outputs/bundle/release/app-release.aab')
+  end
+
+  desc "Promote Internal to Alpha"
+  lane :promote_to_alpha do
+    upload_to_play_store(track: 'alpha', skip_upload_aab: true, skip_upload_metadata: false, skip_upload_images: false, skip_upload_screenshots: false)
+  end
+end
