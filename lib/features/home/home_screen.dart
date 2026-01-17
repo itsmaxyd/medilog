@@ -11,13 +11,13 @@ import '../insurance/screens/insurance_list_screen.dart';
 import '../vitals/screens/vital_list_screen.dart';
 import '../period/screens/period_list_screen.dart';
 import '../tips/screens/health_tips_screen.dart';
+import '../../data/database/database.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/providers.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
-  @override
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final profile = ref.watch(selectedProfileProvider);
